@@ -8,16 +8,16 @@ import { persistStore } from 'redux-persist'
 import './index.css'
 import App from './App'
 
-let persistor = persistStore(store);
+// let persistor = persistStore(store);
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </PersistGate>
+      {/* <PersistGate loading={null} persistor={persistor}> */}
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+      {/* </PersistGate> */}
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
