@@ -13,4 +13,9 @@ io.on("connection", socket => {
     socket.on("send_message", (message) => {
         io.emit("new_message", message)
     })
+
+    socket.on("disconnect", data => {
+        console.log("User disconnected", { socket })
+        //socket.broadcast.to(data.room).emit("user_disconnect", data.user)
+    })
 })

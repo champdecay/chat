@@ -32,12 +32,16 @@ export default function ChatRoom() {
     useEffect(() => {
         if (socket && user) {
             const handleNewUser = (user) => {
-                console.log(`${user} has joined ${params.id}`)
-                dispatch(addMessage(`${user} has joined ${params.id}`))
+                dispatch(addMessage({ user: user, message: `${user} has joined the room`, time: new Date(), type: "user_added" }))
             }
+
+
+
             socket.on("new_user", handleNewUser)
+
             return () => {
                 socket.off("new_user", handleNewUser)
+                socket.off("user_disconnect", handleUserLeft)
             }
         }
     }, [socket, user]);
@@ -45,8 +49,7 @@ export default function ChatRoom() {
     useEffect(() => {
         if (socket && user) {
             const handleNewMessage = (message) => {
-                console.log(message)
-                dispatch(addMessage(message))
+                dispatch(addMessage({ user: user, message: message, time: new Date(), type: "message" }))
             }
             socket.on("new_message", handleNewMessage)
             return () => {
@@ -69,7 +72,7 @@ export default function ChatRoom() {
             <ul>
                 <li>{user} has created {params.id}</li>
                 {chat && chat.messages.map((message, index) => {
-                    return <li key={index}>{message}</li>
+                    return <li key={index}>{message.message}</li>
                 })}
             </ul>
 
