@@ -46,6 +46,7 @@ export default function ChatRoom() {
         }
     }, [socket, user]);
 
+
     useEffect(() => {
         if (socket && user) {
             const handleNewMessage = (message) => {
