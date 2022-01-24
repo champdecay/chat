@@ -81,7 +81,7 @@ export default function ChatRoom() {
   if (user) {
     return (
       <div className="chatRoom">
-        <nav className="navbar bg-indigo-600 text-white p-4">
+        {/* <nav className="navbar bg-indigo-600 text-white p-4">
           <div className="container flex justify-between align-middle mx-auto">
             <div className="logo">
               <h1 className="font-extrabold text-xl">SecretChat</h1>
@@ -389,7 +389,7 @@ export default function ChatRoom() {
           <div className="container flex justify-between align-middle mx-auto">
             Copyright @2022
           </div>
-        </footer>
+        </footer> */}
 
         <ul>
                 <li>{user} has created {params.id}</li>
